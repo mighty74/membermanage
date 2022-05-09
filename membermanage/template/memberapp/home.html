@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<link rel = "stylesheet" href = "{% static 'css/list.css' %}">
+{% endblock header %}
+
+{% block content %}
+<div class = "jumbotron">
+    <h1 class = "display-4">Home</h>
+    <p class = "lead"></p>ホームです</p>
+</div>
+
+
+<div class='container'>
+    <a href="{% url 'createlist' %}" class="btn btn-primary">新規追加</a>
+
+    <form method="GET">
+        <input type="text" name="keyword">
+        <button type="submit">検索</button>
+    </form>
+
+    {% if messages %}
+    {% for message in messages %}
+        <h3{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h3>
+    {% endfor %}
+    {% endif %}
+
+    {% for list in object_list %}
+        <div class='card'>
+            <div class = 'card-body'>
+                <h1 class = "card-title">{{ list.title }}</h1>
+                <h5>{{ list.content }}</h5>
+                <a href="{% url 'memberlist' list.pk %}" class="btn btn-primary">詳細へ</a>
+                <a href="{% url 'deletelist' list.pk %}" class="btn btn-primary">削除</a>
+            </div>
+        </div>
+    {% endfor %}
+    
+</div>
+{% endblock content %}

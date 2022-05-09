@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<link rel = "stylesheet" href = "{% static 'css/list.css' %}">
+{% endblock header %}
+
+{% block content %}
+<div class = "jumbotron">
+    <h1 class = "display-4">About</h>
+    <p class = "lead"></p>詳細です</p>
+</div>
+
+<div class='container'>
+    <form action = "" method = "POST">{% csrf_token %}
+        <p><a>タイトル：{{ object.title }}</a></p>
+        <input type = "submit" value = "削除します">
+    </form>
+    <a href="{% url 'home' %}" class="btn btn-primary">ホームへ</a>
+</div>
+{% endblock content %}

@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>mambermanage</title>
+
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body class="hold-transition login-page">
+  <div class="login-box">
+    <div class="login-logo">
+      <b>mambermanage</b>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+      <p class="login-box-msg"><b>ログイン画面</b></p>
+
+      <form action="" method="POST" class="form-list">
+        {% csrf_token %}
+        {% for field in form %}
+          <div class="form-group has-feedback">
+            {{ field }}
+          </div>
+        {% endfor %}
+        <div class="row">
+
+          {% for error in form.non_field_errors %}
+            <div class="alert alert-danger" role="alert">
+              <p>{{ error }}</p>
+            </div>
+          {% endfor %}
+          <!-- /.col -->
+          <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">ログオン</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+      <a href="{% url 'accounts:accountcreate' %}" class="btn btn-primary-2">新規作成</a>
+    </div>
+    <!-- /.login-box-body -->
+  </div>
+  <!-- /.login-box -->
+
+  <!-- jQuery 3 -->
+  <script src="{% static 'AdminLTE-2.4.12/bower_components/jquery/dist/jquery.min.js' %}"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="{% static 'AdminLTE-2.4.12/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+  <!-- iCheck -->
+  <script src="{% static 'AdminLTE-2.4.12/plugins/iCheck/icheck.min.js' %}"></script>
+</body>
+</html>

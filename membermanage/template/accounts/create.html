@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>mambermanage</title>
+  
+  
+    <!-- Google Font -->
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+  </head>
+<body class="hold-transition login-page">
+  <div class="login-box">
+    <div class="login-logo">
+      <b>mambermanage</b>
+    </div>
+
+    <div class="login-box-body">
+      <p class="login-box-msg"><b>新規登録画面</b></p>
+      <form method="POST" action="{% url 'accounts:accountcreate' %}" class="form-list">
+        {% csrf_token %}
+        <div class="form-group has-feedback">
+          <label>ユーザーID</label>
+          {{ form.username }}
+        </div>
+        <div class="alert alert-danger" role="alert">
+          {{ form.username.errors }}
+        </div>
+        <div class="form-group has-feedback">
+          <label>パスワード</label>
+          {{ form.password1 }}
+        </div>
+        <div class="alert alert-danger" role="alert">
+          {{ form.password1.errors }}
+        </div>
+        <div class="form-group has-feedback">
+          <label>パスワード(確認)</label>
+          {{ form.password2 }}
+        </div>
+        <div class="alert alert-danger" role="alert">
+          {{ form.password2.errors }}
+        </div>
+        <div class="form-group has-feedback"></div>
+        <button type = "submit" href="{% url 'accounts:login' %}" class="btn btn-primary btn-block">登録</button>
+      </form>
+      <a href="{% url 'accounts:login' %}" class="btn btn-primary-2">ログイン画面へ</a>
+    </div>
+  </div>
+</body>
+</html>
