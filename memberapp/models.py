@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 
+#確認練習用のテストモデル
 class Test(models.Model):
     class Meta:
         verbose_name = "Test"
@@ -13,6 +14,7 @@ class Test(models.Model):
 SE = (('男', '男'), ('女', '女'))
 GRADE = (('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'))
 
+#個人の情報モデル、author=入力したユーザ情報、listpk=どのリストに入力したかのpk
 class List(models.Model):
     class Meta:
         verbose_name = "リスト"
@@ -32,6 +34,7 @@ class List(models.Model):
     def __str__(self):
         return self.name
 
+#リストが持つべき情報
 class BList(models.Model):
     class Meta:
         verbose_name = "Bリスト"
